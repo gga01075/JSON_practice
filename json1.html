@@ -9,6 +9,7 @@
     <script>
             $(document).ready(function() {
                     
+                /*
                     $.getJSON('js/test.json', function(data) {
                     
                     var html = [];
@@ -22,8 +23,6 @@
                         html.push('<div >' + item.phoneNumber[0].type + '</div>');
                         html.push('</div>');
                         html.push('</div>');
-                        
-                        //html.push('<li id="' + key + '">' + val + '</li>');
                     });
                     
                     console.log(html);
@@ -31,6 +30,32 @@
                     $('#target').html(html.join(''));
                     
                     });
+                */
+
+
+                    $.ajax({
+                        url: 'js/test.json',
+                        dataType: 'json',
+                        success: function (result) { //ajax2.json에 있는 모든 데이터가 result에 담긴다
+                        console.log(result);
+                        var liEle = '';  //숫자 0, 문자 ''
+                        $.each(result, function (key, value) {
+                            //console.log(key, value); 
+                            // \n 줄바꿈을 위한 특수문자
+                            liEle += '<li>' + value + '</li>\n';
+                        });
+                        console.log(liEle);
+                        //#list 내부에 자식으로 3개의 li를 동적 생성함
+                        $('#list').append(liEle);
+                        },
+                        error: function (xhr) {
+                        console.log(xhr.status, xhr.statusText); //오류번호, 오류설명
+                        $('#list').html('<li>' + xhr.status + '에러 :' + xhr.statusText + '</li>');
+                        }
+                    });
+                    
+
+
                 });
   </script>
 </head>
