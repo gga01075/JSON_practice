@@ -8,6 +8,8 @@
     <style>
         table{border-collapse: collapse;border-spacing: 0;}
         th,td{border: 1px solid #000;}
+        .w100{width: 100px;}
+        .w200{width: 200px;}
     </style>
     <script src="js/jquery-1.12.4.min.js"></script>
     <script>
@@ -51,7 +53,11 @@
 <body>
     <h2>JSON데이터</h2>
     <table id="table_list">
-
+        <colgroup>
+            <col class="w100">
+            <col class="w200">
+            <col class="w100">
+        </colgroup>
     </table>
 </body>
 </html>
