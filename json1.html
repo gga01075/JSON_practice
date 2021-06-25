@@ -16,15 +16,25 @@
                                     var bannerEle = '';
                                     $.each(result, function (index, obj) { //배열 인덱스 번호에 담긴 값이 객체이어서 변수명을 obj
                                         //console.log(obj.subject, obj.img, obj.link);
-
+                                        /* 
                                         bannerEle += '<div>\n';
                                         bannerEle += '  <h2>' + obj.subject + '</h2>\n';
                                         bannerEle += '  <img src="images/' + obj.img + '" alt="">\n';
                                         bannerEle += '  <a href="' + obj.link + '">더보기</a>\n';
-                                        bannerEle += '</div>\n';
-                                        console.log(typeof obj.subject,typeof obj.img,typeof obj.link);
+                                        bannerEle += '</div>\n'; 
+                                        */
+                                        // console.log(typeof obj.subject,typeof obj.img,typeof obj.link);
+
+                                        bannerEle += 
+                                                `
+                                                <div>
+                                                    <h2>${obj.subject}</h2>
+                                                    <img src="images/${obj.img}" alt="">
+                                                    <a href="${obj.link}">더보기</a>
+                                                </div>         
+                                                `
                                     });
-                                    console.log(bannerEle);
+                                    // console.log(bannerEle);
 
                                     //#subject에 동적생성
                                     $('#list').append(bannerEle);
@@ -37,17 +47,14 @@
 
                             }
                         });
-
-
-
                 });
   </script>
 </head>
 <body>
     <h2>JSON데이터</h2>
-    <ol id="list">
+    <table id="list">
 
-    </ol>
+    </table>
    
 </body>
 </html>
