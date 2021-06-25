@@ -22,17 +22,18 @@
                                         bannerEle += '  <img src="images/' + obj.img + '" alt="">\n';
                                         bannerEle += '  <a href="' + obj.link + '">더보기</a>\n';
                                         bannerEle += '</div>\n';
+                                        console.log(typeof obj.subject,typeof obj.img,typeof obj.link);
                                     });
-                                    //console.log(bannerEle);
+                                    console.log(bannerEle);
 
                                     //#subject에 동적생성
                                     $('#list').append(bannerEle);
                             },
                             error: function (xhr) {
-                            var bannerEle = '<div class="lh276">' + xhr.status + '에러 : ' + xhr.statusText + '</div>';
+                                var bannerEle = '<div class="lh276">' + xhr.status + '에러 : ' + xhr.statusText + '</div>';
 
-                            //#subject에 동적생성
-                            $('#list').append(bannerEle);
+                                //#subject에 동적생성
+                                $('#list').append(bannerEle);
 
                             }
                         });
