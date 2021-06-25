@@ -9,20 +9,13 @@
     <script>
             $(document).ready(function() {
                 $.ajax({
-                            url: 'js/test.json',
+                            url: 'js/test.son',
                             dataType: 'json',
                             success: function (result) {
                                     console.log(result); 
                                     var bannerEle = '';
                                     $.each(result, function (index, obj) { //배열 인덱스 번호에 담긴 값이 객체이어서 변수명을 obj
                                         //console.log(obj.subject, obj.img, obj.link);
-                                        /* 
-                                        bannerEle += '<div>\n';
-                                        bannerEle += '  <h2>' + obj.subject + '</h2>\n';
-                                        bannerEle += '  <img src="images/' + obj.img + '" alt="">\n';
-                                        bannerEle += '  <a href="' + obj.link + '">더보기</a>\n';
-                                        bannerEle += '</div>\n'; 
-                                        */
                                         // console.log(typeof obj.subject,typeof obj.img,typeof obj.link);
 
                                         bannerEle += 
