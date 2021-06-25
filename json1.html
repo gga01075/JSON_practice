@@ -26,14 +26,14 @@
                                     //console.log(bannerEle);
 
                                     //#subject에 동적생성
-                                    $('#subject').append(bannerEle);
+                                    $('#list').append(bannerEle);
                             },
                             error: function (xhr) {
                             var bannerEle = '<div class="lh276">' + xhr.status + '에러 : ' + xhr.statusText + '</div>';
 
                             //#subject에 동적생성
                             $('#list').append(bannerEle);
-                            
+
                             }
                         });
 
