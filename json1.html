@@ -8,52 +8,34 @@
     <script src="js/jquery-1.12.4.min.js"></script>
     <script>
             $(document).ready(function() {
-                    
-                /*
-                    $.getJSON('js/test.json', function(data) {
-                    
-                    var html = [];
-                    
-                    $.each(data, function(i, item) {
-                        html.push('<div >');
-                        html.push('<h3 >' + item.firstName + '</h3>');
-                        html.push('<div >' + item.lastName + '</div>');
-                        html.push('<div >' + item.age + '</div>');
-                        html.push('<div >' + item.address.streetAddress + '</div>');
-                        html.push('<div >' + item.phoneNumber[0].type + '</div>');
-                        html.push('</div>');
-                        html.push('</div>');
-                    });
-                    
-                    console.log(html);
-                    
-                    $('#target').html(html.join(''));
-                    
-                    });
-                */
+                $.ajax({
+                            url: 'js/test.json',
+                            dataType: 'json',
+                            success: function (result) {
+                                    console.log(result); 
+                                    var bannerEle = '';
+                                    $.each(result, function (index, obj) { //배열 인덱스 번호에 담긴 값이 객체이어서 변수명을 obj
+                                        //console.log(obj.subject, obj.img, obj.link);
 
+                                        bannerEle += '<div>\n';
+                                        bannerEle += '  <h2>' + obj.subject + '</h2>\n';
+                                        bannerEle += '  <img src="images/' + obj.img + '" alt="">\n';
+                                        bannerEle += '  <a href="' + obj.link + '">더보기</a>\n';
+                                        bannerEle += '</div>\n';
+                                    });
+                                    //console.log(bannerEle);
 
-                    $.ajax({
-                        url: 'js/test.json',
-                        dataType: 'json',
-                        success: function (result) { //ajax2.json에 있는 모든 데이터가 result에 담긴다
-                        console.log(result);
-                        var liEle = '';  //숫자 0, 문자 ''
-                        $.each(result, function (key, value) {
-                            //console.log(key, value); 
-                            // \n 줄바꿈을 위한 특수문자
-                            liEle += '<li>' + value + '</li>\n';
+                                    //#subject에 동적생성
+                                    $('#subject').append(bannerEle);
+                            },
+                            error: function (xhr) {
+                            var bannerEle = '<div class="lh276">' + xhr.status + '에러 : ' + xhr.statusText + '</div>';
+
+                            //#subject에 동적생성
+                            $('#subject').append(bannerEle);
+                            }
                         });
-                        console.log(liEle);
-                        //#list 내부에 자식으로 3개의 li를 동적 생성함
-                        $('#list').append(liEle);
-                        },
-                        error: function (xhr) {
-                        console.log(xhr.status, xhr.statusText); //오류번호, 오류설명
-                        $('#list').html('<li>' + xhr.status + '에러 :' + xhr.statusText + '</li>');
-                        }
-                    });
-                    
+
 
 
                 });
