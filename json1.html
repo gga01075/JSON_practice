@@ -20,23 +20,25 @@
 
                                         bannerEle += 
                                                 `
-                                                <div>
-                                                    <h2>${obj.subject}</h2>
-                                                    <img src="images/${obj.img}" alt="">
-                                                    <a href="${obj.link}">더보기</a>
-                                                </div>         
+                                                <tr>
+                                                    <td>
+                                                        <h2>${obj.subject}</h2>
+                                                    </td>
+                                                    <td><img src="images/${obj.img}" alt=""></td>
+                                                    <td><a href="${obj.link}">더보기</a></td>
+                                                </tr>         
                                                 `
                                     });
                                     // console.log(bannerEle);
 
                                     //#subject에 동적생성
-                                    $('#list').append(bannerEle);
+                                    $('#table_list').append(bannerEle);
                             },
                             error: function (xhr) {
-                                var bannerEle = '<div class="lh276">' + xhr.status + '에러 : ' + xhr.statusText + '</div>';
+                                var bannerEle = `<div class="lh276">${xhr.status}에러 : ${xhr.statusText}</div>`;
 
                                 //#subject에 동적생성
-                                $('#list').append(bannerEle);
+                                $('#table_list').append(bannerEle);
 
                             }
                         });
@@ -45,9 +47,9 @@
 </head>
 <body>
     <h2>JSON데이터</h2>
-    <div id="list">
+    <table id="table_list">
 
-    </div>
+    </table>
    
 </body>
 </html>
