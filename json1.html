@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON데이터 받아오기 연습</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+            $(document).ready(function() {
+                    
+                    $.getJSON('/js/test.json', function(data) {
+                    
+                    var html = [];
+                    
+                    $.each(data, function(i, item) {
+                        html.push('<div >');
+                        html.push('<h3 >' + item.firstName + '</h3>');
+                        html.push('<div >' + item.lastName + '</div>');
+                        html.push('<div >' + item.age + '</div>');
+                        html.push('<div >' + item.address.streetAddress + '</div>');
+                        html.push('<div >' + item.phoneNumber[0].type + '</div>');
+                        html.push('</div>');
+                        html.push('</div>');
+                        
+                        //html.push('<li id="' + key + '">' + val + '</li>');
+                    });
+                    
+                    console.log(html);
+                    
+                    $('#target').html(html.join(''));
+                    
+                    });
+                });
+  </script>
+</head>
+<body>
+    <h2>JSON데이터</h2>
+    <div id="target"  />
+
+
+
+
+
+   
+</body>
+</html>
